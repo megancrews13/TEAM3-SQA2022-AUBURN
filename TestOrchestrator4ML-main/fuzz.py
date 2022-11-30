@@ -1,8 +1,12 @@
-import generation.constants as constants
+import numpy as np
+import attack_model
+
+
 from generation.py_parser import checkAlgoNames
 from label_perturbation_attack.knn import euc_dist
 from label_perturbation_attack.knn import calculate_metrics
 from label_perturbation_attack.main import call_loss
+from generation.main import generateUnitTesting
 
 def fuzzingCheckAlgoNames():
         #inputs to try
@@ -62,11 +66,29 @@ def fuzzingCall_Loss():
                    print ("call_loss failed with " + str(input))
            print ("Finished fuzzing.")
 
+def fuzzingGenerateUnitTesting():
+           #inputs to try
+           fuzzingValues1 = ["simple", 0, ([]), 6]
+           fuzzingValues2 = ["complex", 3, ({}), 10]
+           print ("Start the fuzzing.")
+
+           #looping to search for errors
+           for val1 in fuzzingValues1:
+               for val2 in fuzzingValues2:
+                   try:
+                      generateUnitTesting(val1, val2)
+                      print ("generateUnitTesting passed with " + str(val1) + "and " + str(val2))
+                   except:
+                      print ("generateUnitTesting failed with " + str(val1) + "and " + str(val2))
+           print ("Finished fuzzing.")
+
 def main():
     fuzzingCheckAlgoNames()
     fuzzingEuc_Dist()
     fuzzingCalculate_Metrics()
     fuzzingCall_Loss()
+    fuzzingGenerateUnitTesting()
+
 
 if __name__ == "__main__":
     main()
