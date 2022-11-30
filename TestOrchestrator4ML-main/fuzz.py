@@ -1,10 +1,8 @@
 import numpy as np
-import attack_model
 
 
 from generation.py_parser import checkAlgoNames
-from label_perturbation_attack.knn import euc_dist
-from label_perturbation_attack.knn import calculate_metrics
+from label_perturbation_attack.knn import euc_dist, calculate_metrics
 from label_perturbation_attack.main import call_loss
 from generation.main import generateUnitTesting
 
