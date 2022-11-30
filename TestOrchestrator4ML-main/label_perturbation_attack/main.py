@@ -11,8 +11,9 @@ from matplotlib import pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 from scipy import stats
 import cliffsDelta
+import logger
 
-
+logO = logger.getLoggerObj()
 
 def giveTimeStamp():
     tsObj = time.time()
@@ -20,6 +21,7 @@ def giveTimeStamp():
     return strToret
     
 def run_experiment(model_name):
+    logO.info('{}:{}:{}({})'.format('label_perturbation_attack', 'main.py', 'run_experiment', model_name))
     X_train, X_test, X_val, y_train, y_test, y_val = attack_model.prepare_data()
 #     attack_model.calculate_metrics(X_train, y_train)
     precision, recall, fscore, auc = attack_model.perform_inference(X_train, X_test, y_train, y_test, model_name)
@@ -47,6 +49,7 @@ def run_prob_based_perturbation_experiment(change_unit, I, g, model_name):
     return precision, recall, fscore, auc
     
 def draw_plot(change, initial, random, loss, prob, plot_type):
+    logO.info('{}:{}:{}({}, {}, {}, {}, {}, {})'.format('label_perturbation_attack', 'main.py', 'draw_plot', change, initial, random, loss, prob, plot_type))
     plt.figure()
     plt.plot(change, initial, 'r', label = "initial") 
     plt.plot(change, random, 'g', label = "random", alpha=0.5) 
@@ -91,6 +94,7 @@ def call_prob(I, g, model_name):
     return precision, recall, fscore, auc, time_needed, change_unit
     
 def calculate_stat(baseline_data, experiment_data):
+    logO.info('{}:{}:{}({}, {})'.format('label_perturbation_attack', 'main.py', 'calculate_stat', baseline_data, experiment_data))
     try:
         TS, p = stats.mannwhitneyu(list(experiment_data), list(baseline_data), alternative='less')
     except ValueError:
