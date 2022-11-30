@@ -1,24 +1,23 @@
-import numpy as np
+import traceback
+
+from detection import constants
+from dataclasses import dataclass
 
 
-from generation.py_parser import checkAlgoNames
-from label_perturbation_attack.knn import euc_dist, calculate_metrics
-from label_perturbation_attack.main import call_loss
-from generation.main import generateUnitTesting
+from detection import py_parser
+from label_perturbation_attack import knn
+from generation import main
+from label_perturbation_attack import main
 
-def fuzzingCheckAlgoNames():
-        #inputs to try
-        fuzzingValues = [12, No, {No}, [No], {0}, "///", 35]
-        print ("Starting the fuzzing.")
 
-        #looping through inputs to see if there are errors
-        for inputs in fuzzingValues:
-            try:
-                checkAlgoNames(input)
-                print ("checkAlgoNames passed with " + str(input))
-            except:
-                print ("checkAlgoNames failed with " + str(input))
-        print ("Finished fuzzing.")
+def fuzzingCheckAlgoNames(fuzzing):
+
+           algo_list = fuzzing.value1
+
+           if not algo_list:
+              checkAlogNames()
+           else:
+              print ("Wrong input")
 
 def fuzzingEuc_Dist():
            #inputs to try
@@ -36,19 +35,15 @@ def fuzzingEuc_Dist():
                            print ("euc_dist failed with " + str(val1) + " and " + str(val2))
            print ("Finished fuzzing.")
 
-def fuzzingCalculate_Metrics():
-           #inputs to try
-           fuzzingValues = [x, "toy", 24]
-           print ("Start the fuzzing.")
+def fuzzingPredict(fuzzing):
 
-           #looping to search for errors
-           for inputs in fuzzingValues:
-               try:
-                   calculate_metrics(input)
-                   print ("calculate_metrics passed with " + str(input))
-               except:
-                   print ("calculate_metrics failed with " + str(input))
-           print ("Finished fuzzing.")
+           predictions = fuzzing.value2
+
+           if not predictions:
+              predict()
+           else:
+              print ("Wrong input")
+
 
 def fuzzingCall_Loss():
            #inputs to try
@@ -64,7 +59,8 @@ def fuzzingCall_Loss():
                    print ("call_loss failed with " + str(input))
            print ("Finished fuzzing.")
 
-def fuzzingGenerateUnitTesting():
+
+def fuzzingGenerateUnitTest():
            #inputs to try
            fuzzingValues1 = ["simple", 0, ([]), 6]
            fuzzingValues2 = ["complex", 3, ({}), 10]
@@ -74,18 +70,27 @@ def fuzzingGenerateUnitTesting():
            for val1 in fuzzingValues1:
                for val2 in fuzzingValues2:
                    try:
-                      generateUnitTesting(val1, val2)
-                      print ("generateUnitTesting passed with " + str(val1) + "and " + str(val2))
+                      generateUnitTest(val1, val2)
+                      print ("generateUnitTest passed with " + str(val1) + "and " + str(val2))
                    except:
-                      print ("generateUnitTesting failed with " + str(val1) + "and " + str(val2))
+                      print ("generateUnitTest failed with " + str(val1) + "and " + str(val2))
            print ("Finished fuzzing.")
 
+@dataclass
+class fuzzingValues():
+
+      value1 = "The cow jumped over the moon"
+      value2 = "23869035345"
+
+
 def main():
-    fuzzingCheckAlgoNames()
+    fuzzing = fuzzingValues()
+
+    fuzzingCheckAlgoNames(fuzzing)
     fuzzingEuc_Dist()
-    fuzzingCalculate_Metrics()
+    fuzzingPredict(fuzzing)
     fuzzingCall_Loss()
-    fuzzingGenerateUnitTesting()
+    fuzzingGenerateUnitTest()
 
 
 if __name__ == "__main__":
