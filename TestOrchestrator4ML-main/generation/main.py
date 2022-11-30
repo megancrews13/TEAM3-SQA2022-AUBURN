@@ -3,10 +3,13 @@ import time
 import datetime 
 import os 
 import pandas as pd
-import py_parser 
+import py_parser
 import numpy as np 
 import label_perturbation_main
+import logger
 
+
+logO = logger.getLoggerObj()
 
 def giveTimeStamp():
   tsObj = time.time()
@@ -15,6 +18,7 @@ def giveTimeStamp():
 
 
 def generateUnitTest(algo, attack_type):
+    logO.info('{}:{}:{}({}, {})'.format('generation', 'main.py', 'generateUnitTest', algo, attack_type))
     file_name = "../../output/attack_unit_test/test_attack_" + algo + ".py"
     with open(file_name,"w+") as file:
         file.write("import unittest\n")
@@ -35,6 +39,7 @@ def generateUnitTest(algo, attack_type):
 
 
 def generateAttack(inp_dir, delta):
+    logO.info('{}:{}:{}({}, {})'.format('generation', 'main.py', 'generateAttack', inp_dir, delta))
     if os.path.exists(inp_dir):
         algo_df = pd.read_csv(inp_dir)
     else:
