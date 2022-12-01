@@ -2,10 +2,9 @@ import traceback
 from typing import Any, List
 
 from detection.py_parser import checkAlgoNames
-from label_perturbation_attack.knn import euc_dist, calculate_k
-from label_perturbation_attack.main import call_loss
-from generation.main import generateUnitTest
-
+from label_perturbation_attack.knn import euc_dist, predict
+from generation.attack_model import calculate_k
+from generation.py_parser import getImport
 
 def fuzz(method, fuzzing_arguments: List[Any]):
     for arguments in fuzzing_arguments:
@@ -22,30 +21,30 @@ if __name__ == "__main__":
     fuzz_targets = [
         (
 
-            checkAlgoNmes, [
+            checkAlgoNames, [
                  (0,),
-                 (Zero,),
+                 (None,),
                  (2.4456,),
-                 ({Yes},),
-                 ([Yes],),
+                 (333,),
+                 ("sugar",),
             ]
         ),
         (
             euc_dist, [
-                 (-5, 6),
-                 (7, 12),
+                 ("dog", "cat"),
+                 (None, 12),
                  ("bad", "good"),
                  ("yes", "no"),
-                 (10, 0),
+                 (10, None),
             ]
         ),
         (
-            call_loss, [
-                 ("name"),
-                 (0,),
-                 ({}),
-                 ("none"),
-                 ("yes"),
+            predict, [
+                 ("name", "person"),
+                 (0, 4),
+                 ({}, "Section"),
+                 ("none", 445),
+                 ("yes", "no"),
             ]
         ),
         (
@@ -58,8 +57,8 @@ if __name__ == "__main__":
             ]
         ),
         (
-            generateUnitTest, [
-                 ("simple", "Complex"),
+            getImport, [
+                 ("simple", "complex"),
                  (0, 3),
                  ({}, []),
                  (6, 10),
