@@ -1,1 +1,5 @@
-showweakness.csv
+*.csv
+
+*.pyc
+
+/.idea
