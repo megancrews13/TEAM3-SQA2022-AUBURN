@@ -25,7 +25,7 @@ def fuzzingEuc_Dist():
            fuzzingValues2 = [6, 12, {Yes}, {}, 0]
            print ("Start the fuzzing.")
 
-           #looping through the inputs to look for errors
+           #looping through the inputs to test damage look for errors
            for val1 in fuzzingValues1:
                for val2 in fuzzingValues2:
                        try:
@@ -61,7 +61,7 @@ def fuzzingCall_Loss():
 
 
 def fuzzingGenerateUnitTest():
-           #inputs to try
+           #inputs to try damage
            fuzzingValues1 = ["simple", 0, ([]), 6]
            fuzzingValues2 = ["complex", 3, ({}), 10]
            print ("Start the fuzzing.")

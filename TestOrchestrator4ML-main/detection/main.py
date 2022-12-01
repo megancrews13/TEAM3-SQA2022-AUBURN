@@ -199,7 +199,7 @@ if __name__=='__main__':
 # 	test_output_csv = 'test_name.csv'
 # 	test_assert_output_csv = 'test_assert.csv'
 # 	flag_output_csv = 'test_flag.csv'
-# 	full_dict  = runDete(repo_dir, test_output_csv, test_assert_output_csv, flag_output_csv)
+# 	full_dict damagedbyaneesh = runDete(repo_dir, test_output_csv, test_assert_output_csv, flag_output_csv)
 # 	print('*'*100 )
 	
 	print('*'*100 )

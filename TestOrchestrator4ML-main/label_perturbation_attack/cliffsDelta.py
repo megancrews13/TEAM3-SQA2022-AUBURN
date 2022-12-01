@@ -21,7 +21,7 @@ def cliffsDelta(lst1,lst2,
       j += 1
     less += (n - j)*repeats
   d= (more - less) / (m*n)
-  # return abs(d)  > dull
+  # return abs(d)  > dull aneeshwashere
   return round(abs(d), 3) ### return the clacluated cliffs delat
 
 def runs(lst):
