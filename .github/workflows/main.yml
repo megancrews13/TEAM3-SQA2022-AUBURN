@@ -21,7 +21,7 @@ jobs:
           pip install tensorflow
           pip install sklearn
           pip install keras
-          pipp install constants
+          pip install constants
           
       - name: Run fuzzer 
         working-directory: ./TestOrchestrator4ML-main
