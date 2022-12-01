@@ -1,6 +1,6 @@
 import traceback
 
-from detection import constants
+
 from dataclasses import dataclass
 
 
@@ -8,14 +8,16 @@ from detection import py_parser
 from label_perturbation_attack import knn
 from generation import main
 from label_perturbation_attack import main
-
+from label_perturbation_attack.knn import euc_dist, predict
+from label_perturbation_attack.main import call_loss, call_prob
+from generation.main import generateUnitTest
 
 def fuzzingCheckAlgoNames(fuzzing):
 
            algo_list = fuzzing.value1
 
            if not algo_list:
-              checkAlogNames()
+              checkAlgoNames()
            else:
               print ("Wrong input")
 
@@ -25,7 +27,7 @@ def fuzzingEuc_Dist():
            fuzzingValues2 = [6, 12, {Yes}, {}, 0]
            print ("Start the fuzzing.")
 
-           #looping through the inputs to look for errors damage ignore
+           #looping through the inputs to look for errors 
            for val1 in fuzzingValues1:
                for val2 in fuzzingValues2:
                        try:
