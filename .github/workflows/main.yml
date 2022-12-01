@@ -6,7 +6,7 @@ on:
       - master
 jobs:
   autoFuzz:
-    runs-on: ubuntu-latest
+    runs-on: Git Bash
     steps:
       - uses: actions/checkout@main
       
@@ -21,9 +21,6 @@ jobs:
           pip install tensorflow
           pip install scikit-learn
           pip install keras
-          pip install constants
-          pip install pandas
-          pip install matplotlib
           
       - name: Run fuzzer 
         working-directory: ./TestOrchestrator4ML-main
