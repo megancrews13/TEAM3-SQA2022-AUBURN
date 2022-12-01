@@ -1,2 +1,2 @@
 # TEAM3-SQA2022-AUBURN
-# Team Members: Will Thompson & Aneesh Akella
+# Team Members: Megan Crews, Will Thompson & Aneesh Akella
