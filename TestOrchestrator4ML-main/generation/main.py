@@ -6,6 +6,8 @@ import pandas as pd
 import py_parser
 import numpy as np 
 import label_perturbation_main
+
+
 import logger
 
 
@@ -73,7 +75,7 @@ if __name__=='__main__':
     
 #     print('*'*100 )
 #     algo_input_csv = 'algo_list.csv'
-#     generatetingsgsgdhgfhgsdfhaughehhuhuhehe(algo_input_csv, delta)
+#     generateAttack(algo_input_csv, delta)
 #     print('*'*100 )
 
     print('*'*100 )
