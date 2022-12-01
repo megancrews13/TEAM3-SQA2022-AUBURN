@@ -1,0 +1,27 @@
+name: Fuzzer
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+jobs:
+  autoFuzz:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      
+      - name: Setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: |
+          pip install astdump
+          pip install tensorflow
+          pip install sklearn
+          pip install keras
+          
+      - name: Run fuzzer 
+        working-directory: ./TestOrchestrator4ML-main
+        run: python fuzz.py
