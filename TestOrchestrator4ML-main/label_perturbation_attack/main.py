@@ -49,7 +49,6 @@ def run_prob_based_perturbation_experiment(change_unit, I, g, model_name):
     return precision, recall, fscore, auc
     
 def draw_plot(change, initial, random, loss, prob, plot_type):
-    logO.info('{}:{}:{}({}, {}, {}, {}, {}, {})'.format('label_perturbation_attack', 'main.py', 'draw_plot', change, initial, random, loss, prob, plot_type))
     plt.figure()
     plt.plot(change, initial, 'r', label = "initial") 
     plt.plot(change, random, 'g', label = "random", alpha=0.5) 
@@ -94,7 +93,6 @@ def call_prob(I, g, model_name):
     return precision, recall, fscore, auc, time_needed, change_unit
     
 def calculate_stat(baseline_data, experiment_data):
-    logO.info('{}:{}:{}({}, {})'.format('label_perturbation_attack', 'main.py', 'calculate_stat', baseline_data, experiment_data))
     try:
         TS, p = stats.mannwhitneyu(list(experiment_data), list(baseline_data), alternative='less')
     except ValueError:
@@ -106,6 +104,7 @@ def calculate_stat(baseline_data, experiment_data):
     
 def repeat_experiment():
     model_name = 'KNeighborsClassifier'
+    logO.info('{}:{}:{}({})'.format('label_perturbation_attack', 'main.py', 'repeat_experiment', model_name))
 
     t1 = time.time()
     print('Started at:', giveTimeStamp() )
@@ -171,6 +170,7 @@ def repeat_experiment():
     
 
 def main(args):
+    logO.info('{}:{}:{}({})'.format('label_perturbation_attack', 'main.py', 'main', args))
     parser = argparse.ArgumentParser()
     args = parser.parse_args(args)
 
