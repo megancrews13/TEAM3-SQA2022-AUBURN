@@ -22,6 +22,7 @@ jobs:
           pip install sklearn
           pip install keras
           pip install constants
+          pip install pandas
           
       - name: Run fuzzer 
         working-directory: ./TestOrchestrator4ML-main
