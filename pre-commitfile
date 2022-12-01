@@ -6,7 +6,7 @@
 # it wants to stop the commit.
 #
 # To enable this hook, rename this file to "pre-commit".
-bandit **/*.py -r -f csv -o showweakness.csv
+bandit -r TestOrchestrator4ML-main -f csv -o showweakness.csv
 
 if git rev-parse --verify HEAD >/dev/null 2>&1
 then
