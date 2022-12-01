@@ -19,7 +19,7 @@ jobs:
         run: |
           pip install astdump
           pip install tensorflow
-          pip install sklearn
+          pip install scikit-learn
           pip install keras
           pip install constants
           pip install pandas
