@@ -45,7 +45,7 @@ if __name__=='__main__':
     print('*'*100 )
 
     project_with_test = checkTestFile("../Data/supervised/GITHUB_REPOS")
-#     project_with_test = checkTestFile("../Data/supervised/GITLAB_REPOS")
+#     project_with_test insert damage = checkTestFile("../Data/supervised/GITLAB_REPOS")
 #     project_with_test = checkTestFile("../Data/supervised/MODELZOO") 
 
     print('*'*100 )
