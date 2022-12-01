@@ -23,6 +23,7 @@ jobs:
           pip install keras
           pip install constants
           pip install pandas
+          pip install matplotlib
           
       - name: Run fuzzer 
         working-directory: ./TestOrchestrator4ML-main
