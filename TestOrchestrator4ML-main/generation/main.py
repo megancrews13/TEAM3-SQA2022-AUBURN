@@ -73,7 +73,7 @@ if __name__=='__main__':
     
 #     print('*'*100 )
 #     algo_input_csv = 'algo_list.csv'
-#     generateAttack(algo_input_csv, delta)
+#     generatetingsgsgdhgfhgsdfhaughehhuhuhehe(algo_input_csv, delta)
 #     print('*'*100 )
 
     print('*'*100 )
